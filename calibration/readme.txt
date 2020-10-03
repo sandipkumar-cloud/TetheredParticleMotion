@@ -1,6 +1,7 @@
 Tethered particle motion (TPM) is a single molecule particle tracking technique where a bead is attached to a DNA tether and acts as a reporter of DNA dynamics (https://en.wikipedia.org/wiki/Tethered_particle_motion). Here, I have uploaded the code that is used to create a calibration plot from the raw data for different DNA tether sizes.
 
 selectbeads63X.m reads the raw tethered particle motion data. It corrects the drift using using immobile beads and selects good tethered beads which are tethered to single DNA tethers and hence are symmetric. The outpput for each file is saved as data structure c in a .mat file. The analysis is repeated for all the raw data files (1 file for each filed of view). (The first version of the code was written by Carlo Manzo, later David Dunlap edited it. Sandip Kumar rewrote the code to make it simpler to understand and incorporated new features like better drift correction using immobile beads and symmetry test to screen good beads.)
+Use selectbeads63X_20frames.m for better drift correction. 20 frames gave the best localisation of immobile beads and hence subtracting the 20 frame moving average of the position of the bead gives the best drift correction. Using every frame may also work but will have a positional noise of ~2nm.
 
 collectALLdata.m combines all the outputs from all the field of views for a single DNA tether length in a single file. The output mat file has the time series of the x-y location of each tether bead. It also has the location of the raw data stored in the variable SOURCE.
 
